@@ -7,13 +7,18 @@
 
 CC  =   gcc
 
+VILLAGE_PATH =   src/village
+
 SRC	=   src/main.c \
+	$(VILLAGE_PATH)/village.c \
+	$(VILLAGE_PATH)/villager.c \
+	$(VILLAGE_PATH)/druid.c
 
 OBJ         =   $(SRC:.c=.o)
 
 NAME        =   panoramix
 
-CFLAGS      =   -Wall -Wextra -Werror -I./include
+CFLAGS      =   -Wall -Wextra -Werror -I./include -pthread
 
 all:    $(NAME)
 

@@ -10,7 +10,7 @@
 int check_argument(int argc, char **argv)
 {
     if (argc != 5) {
-        printf("USAGE: ./panoramix <nb_villagers> <pot_size> <nb_fights> <nb_refills>");
+        printf("USAGE: ./panoramix <nb_villagers> <pot_size> <nb_fights> <nb_refills>\n");
         return 84;
     }
     if (atoi(argv[1]) <= 0 || atoi(argv[2]) <= 0 || atoi(argv[3]) <= 0 ||
@@ -40,9 +40,7 @@ int main(int argc, char **argv)
         return 84;
     village = parse_arguments(argv);
     village.pot = village.pot_size;
-    init_druid(&village);
-    printf("The village has %d villagers, a pot size of %d, and there will be\
-        %d fights and %d refills.\n", village.nb_villagers, village.pot_size,
-        village.nb_fights, village.nb_refills);
-    return 0;
+    printf("The village has %d villagers, a pot size of %d, and there will be %d fights and %d refills.\n", 
+           village.nb_villagers, village.pot_size, village.nb_fights, village.nb_refills);  
+    return village_run(&village);
 }
