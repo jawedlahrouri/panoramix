@@ -12,7 +12,13 @@ void init_villager(village_t *village, villager_t *villager, int id)
     villager->thread = 0;
     villager->id = id;
     villager->nb_fights = village->nb_fights;
+    villager->village = village;
     printf("Villager %d: Going into battle!\n", villager->id);
+}
+
+void destroy_villagers(villager_t *villager)
+{
+    (void)villager;
 }
 
 void refill_pot(village_t *village, villager_t *villager)
@@ -25,8 +31,10 @@ void drink_potion(village_t *village, villager_t *villager)
 {   
     if (village->pot == 0)
         refill_pot(village, villager);
-    else 
+    else {
+        village->pot--;
         printf("Villager %d: I need a drink... I see %d servings left.\n", villager->id, village->pot);
+    }
 }
 
 void fight(village_t *village, villager_t *villager)
@@ -36,13 +44,13 @@ void fight(village_t *village, villager_t *villager)
     printf("Villager %d: Take that roman scum! Only %d fights left.\n", villager->id, villager->nb_fights);
 }
 
-void *villager(village_t *village, void *arg)
+void *villager(void *arg) 
 {
-    villager_t *villager = (villager_t *)arg;
+    villager_t *my_data = (villager_t *)arg;
+    village_t *village = my_data->village;
 
-    while (villager->nb_fights > 0)
-        fight(village, villager);
-    printf("Villager %d: I'm going to sleep now.\n", villager->id);
-    pthread_mutex_destroy(&villager->thread);
+    while (my_data->nb_fights > 0)
+        fight(village, my_data);
+    printf("Villager %d: I'm going to sleep now.\n", my_data->id);
     return NULL;
 }
