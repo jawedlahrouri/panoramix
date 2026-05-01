@@ -21,9 +21,15 @@ void *druid(void *arg)
 
 void init_druid(village_t *village)
 {
+    druid_t druid = {0};
+
+    druid.nb_refills = village->nb_refills;
+    druid.pot_size = village->pot_size;
+    druid.pot = village->pot;
     printf("Druid: I'm ready... but sleepy...\n");
-    pthread_mutex_init(&village->mutex, NULL);
-    pthread_cond_init(&village->cond, NULL);
+    druid.thread = pthread_self();
+    pthread_mutex_init(&druid.mutex, NULL);
+    pthread_cond_init(&druid.cond, NULL);
 }
 
 void destroy_druid(village_t *village)
