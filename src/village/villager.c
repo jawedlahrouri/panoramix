@@ -41,7 +41,7 @@ void fight(village_t *village, villager_t *villager)
 {
     drink_potion(village, villager);
     villager->nb_fights--;
-    printf("Villager %d: Take that roman scum! Only %d fights left.\n", villager->id, villager->nb_fights);
+    printf("Villager %d: Take that roman scum! Only %d left.\n", villager->id, villager->nb_fights);
 }
 
 void *villager(void *arg) 
