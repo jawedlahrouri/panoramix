@@ -35,11 +35,11 @@ village_t parse_arguments(char **argv)
 int main(int argc, char **argv)
 {
     village_t village = {0};
-    druid_t druid = {0};
 
     if (check_argument(argc, argv) == 84)
         return 84;
     village = parse_arguments(argv);
+    village.pot = village.pot_size;
     init_druid(&village);
     printf("The village has %d villagers, a pot size of %d, and there will be\
         %d fights and %d refills.\n", village.nb_villagers, village.pot_size,
