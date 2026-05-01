@@ -22,10 +22,6 @@ void *druid(void *arg)
 void init_druid(village_t *village)
 {
     village->druid = (druid_t){0};
-
-    village->druid.nb_refills = village->nb_refills;
-    village->druid.pot_size = village->pot_size;
-    village->druid.pot = village->pot;
     printf("Druid: I'm ready... but sleepy...\n");
     village->druid.thread = pthread_self();
     pthread_mutex_init(&village->druid.mutex, NULL);
@@ -39,7 +35,7 @@ void destroy_druid(village_t *village)
     printf("Druid: I'm out of viscum. I'm going back to... zZz\n");
 }
 
-void refill(village_t *village)
+void druid_refill(village_t *village)
 {
     village->pot = village->pot_size;
     village->nb_refills--;

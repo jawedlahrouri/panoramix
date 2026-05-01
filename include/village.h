@@ -16,9 +16,6 @@ typedef struct druid_s {
     pthread_t thread;
     pthread_mutex_t mutex;
     pthread_cond_t cond;
-    int nb_refills;
-    int pot_size;
-    int pot;
 }
 druid_t;
 
