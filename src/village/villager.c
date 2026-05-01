@@ -13,7 +13,6 @@ void init_villager(village_t *village, villager_t *villager, int id)
     villager->id = id;
     villager->nb_fights = village->nb_fights;
     villager->village = village;
-    printf("Villager %d: Going into battle!\n", villager->id);
 }
 
 void destroy_villagers(villager_t *villager)
@@ -49,6 +48,7 @@ void *villager(void *arg)
     villager_t *my_data = (villager_t *)arg;
     village_t *village = my_data->village;
 
+    printf("Villager %d: Going into battle!\n", my_data->id);
     while (my_data->nb_fights > 0)
         fight(village, my_data);
     printf("Villager %d: I'm going to sleep now.\n", my_data->id);

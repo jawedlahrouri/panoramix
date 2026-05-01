@@ -40,7 +40,5 @@ int main(int argc, char **argv)
         return 84;
     village = parse_arguments(argv);
     village.pot = village.pot_size;
-    printf("The village has %d villagers, a pot size of %d, and there will be %d fights and %d refills.\n", 
-           village.nb_villagers, village.pot_size, village.nb_fights, village.nb_refills);  
     return village_run(&village);
 }

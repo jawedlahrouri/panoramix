@@ -35,7 +35,7 @@ int village_destroy(village_t *village)
 int village_start(village_t *village)
 {
     pthread_create(&village->druid.thread, NULL, druid, village);
-    for (int i = 0; i < village->nb_villagers; i++)
+    for (int i = village->nb_villagers - 1; i >= 0; i--)
         pthread_create(&village->villagers[i].thread, NULL, villager, &village->villagers[i]);
     return 0;
 }
