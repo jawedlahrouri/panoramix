@@ -21,19 +21,14 @@ void destroy_villagers(villager_t *villager)
     (void)villager;
 }
 
-void refill_pot(village_t *village, villager_t *villager)
-{
-    printf("Villager %d: Hey Pano wake up! We need more potion.\n", villager->id);
-    druid_refill(village);
-}
-
 void drink_potion(village_t *village, villager_t *villager)
 {   
     pthread_mutex_lock(&village->mutex);
     printf("Villager %d: I need a drink... I see %d servings left.\n", villager->id, village->pot);
     if (village->pot == 0) {
+        printf("Villager %d: Hey Pano wake up! We need more potion.\n", villager->id);
         pthread_mutex_unlock(&village->mutex);
-        druid_loop(village);
+        druid(village);
     } else {
         village->pot--;
         pthread_mutex_unlock(&village->mutex);
