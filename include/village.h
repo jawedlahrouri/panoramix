@@ -35,7 +35,8 @@ struct village_s {
     druid_t druid;
     villager_t *villagers;
     pthread_mutex_t mutex;
-    pthread_cond_t cond;
+    sem_t potion_portions; 
+    sem_t call_druid;
 };
 
 int check_argument(int argc, char **argv);
