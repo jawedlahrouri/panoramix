@@ -6,12 +6,12 @@
 */
 
 #ifndef VILLAGE_H_
-#define VILLAGE_H_
+    #define VILLAGE_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <semaphore.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <pthread.h>
+    #include <semaphore.h>
 
 typedef struct village_s village_t;
 
@@ -35,7 +35,7 @@ struct village_s {
     druid_t druid;
     villager_t *villagers;
     pthread_mutex_t mutex;
-    sem_t potion_portions; 
+    sem_t potion_portions;
     sem_t call_druid;
 };
 

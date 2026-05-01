@@ -10,12 +10,14 @@
 int check_argument(int argc, char **argv)
 {
     if (argc != 5) {
-        printf("USAGE: ./panoramix <nb_villagers> <pot_size> <nb_fights> <nb_refills>\n");
+        printf("USAGE: ./panoramix <nb_villagers> <pot_size> ");
+        printf("<nb_fights> <nb_refills>\n");
         return 84;
     }
     if (atoi(argv[1]) <= 0 || atoi(argv[2]) <= 0 || atoi(argv[3]) <= 0 ||
         atoi(argv[4]) <= 0) {
-        printf("USAGE: ./panoramix <nb_villagers> <pot_size> <nb_fights> <nb_refills>\nValues must be >0.\n");
+        printf("USAGE: ./panoramix <nb_villagers> <pot_size> ");
+        printf("<nb_fights> <nb_refills>\nValues must be >0.\n");
         return 84;
     }
     return 0;

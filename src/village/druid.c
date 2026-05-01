@@ -18,10 +18,12 @@ void *druid(void *arg)
         if (village->pot == 0) {
             village->pot = village->pot_size;
             village->nb_refills--;
-            printf("Druid: Ah! Yes, yes, I'm awake! Working on it! Beware I can only make %d more refills after this one.\n", village->nb_refills);  
+            printf("Druid: Ah! Yes, yes, I'm awake! Working on it! Beware ");
+            printf("I can only make %d more refills after this one.\n",
+                village->nb_refills);
             for (int i = 0; i < village->pot_size; i++)
                 sem_post(&village->potion_portions);
-        }       
+        }
         pthread_mutex_unlock(&village->mutex);
     }
     printf("Druid: I'm out of viscum. I'm going back to... zZz\n");
