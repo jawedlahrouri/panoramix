@@ -29,11 +29,14 @@ void refill_pot(village_t *village, villager_t *villager)
 
 void drink_potion(village_t *village, villager_t *villager)
 {   
-    if (village->pot == 0)
-        refill_pot(village, villager);
-    else {
+    pthread_mutex_lock(&village->mutex);
+    printf("Villager %d: I need a drink... I see %d servings left.\n", villager->id, village->pot);
+    if (village->pot == 0) {
+        pthread_mutex_unlock(&village->mutex);
+        druid_loop(village);
+    } else {
         village->pot--;
-        printf("Villager %d: I need a drink... I see %d servings left.\n", villager->id, village->pot);
+        pthread_mutex_unlock(&village->mutex);
     }
 }
 

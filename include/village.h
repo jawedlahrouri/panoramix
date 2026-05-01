@@ -54,8 +54,6 @@ void fight(village_t *village, villager_t *villager);
 void *villager(void *arg);
 
 void init_druid(village_t *village);
-void destroy_druid(village_t *village);
-void druid_refill(village_t *village);
 void *druid(void *arg);
 
 #endif /* !VILLAGE_H_ */
