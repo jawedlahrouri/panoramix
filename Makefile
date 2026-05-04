@@ -23,7 +23,7 @@ CFLAGS      =   -Wall -Wextra -Werror -I./include -pthread
 all:    $(NAME)
 
 $(NAME):    $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
