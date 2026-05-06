@@ -5,7 +5,7 @@
 ## Makefile for the FTP server
 ##
 
-CC  =   gcc
+CC  =   epiclang
 
 VILLAGE_PATH =   src/village
 
