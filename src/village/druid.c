@@ -25,10 +25,8 @@ void *druid(void *arg)
     printf("Druid: I'm ready... but sleepy...\n");
     while (village->nb_refills > 0) {
         sem_wait(&village->call_druid);
-        pthread_mutex_lock(&village->mutex);
         if (village->pot == 0)
             refill_potion(village);
-        pthread_mutex_unlock(&village->mutex);
     }
     printf("Druid: I'm out of viscum. I'm going back to... zZz\n");
     return NULL;

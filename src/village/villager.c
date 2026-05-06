@@ -29,9 +29,7 @@ void drink_potion(village_t *village, villager_t *villager)
         printf("Villager %d: Hey Pano wake up! We need more potion.\n",
             villager->id);
         sem_post(&village->call_druid);
-        pthread_mutex_unlock(&village->mutex);
         sem_wait(&village->potion_portions);
-        pthread_mutex_lock(&village->mutex);
         village->pot--;
         pthread_mutex_unlock(&village->mutex);
     } else {
